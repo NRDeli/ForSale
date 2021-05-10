@@ -46,7 +46,7 @@ function geocode(pin=null,area=null){
         }).addTo(mymap);
 
         var house_icon = new L.icon({
-            iconUrl: './images/house.png',
+            iconUrl: '/images/house.png',
             iconSize: [25,25]
         });
         

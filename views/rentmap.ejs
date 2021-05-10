@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/rentmap.css">
+    <title>Rentmap</title>
+</head>
+<body>
+    <span id="bhk"><%= bhk %></span>
+    <span id="price"><%= price %></span><br>
+
+    <input type="checkbox" id="police" name="amenity" value="police" onchange="pol_change(this)">  
+    <label for="police">Police Station</label><br>
+    <input type="checkbox" id="fire_station" name="amenity" value="fire_station" onchange="fir_change(this)">  
+    <label for="fire_station">Fire Station</label><br>
+    <input type="checkbox" id="hospital" name="amenity" value="hospital" onchange="hos_change(this)">  
+    <label for="hospital">Hospital</label><br>
+    <input type="checkbox" id="school" name="amenity" value="school" onchange="sch_change(this)">  
+    <label for="school">School</label><br>
+    <input type="checkbox" id="railway" name="amenity" value="railway" onchange="rail_change(this)">  
+    <label for="railway">Railway Station</label><br>
+    <input type="checkbox" id="park" name="amenity" value="park" onchange="par_change(this)">  
+    <label for="park">Parks</label><br>
+
+
+    <div id="map"></div>
+
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="/json/1bhk_gt40.geojson"></script>
+    <script src="/json/1bhk_lt40.geojson"></script>
+    <script src="/json/1bhk_gt60.geojson"></script>
+    <script src="/json/2bhk_gt40.geojson"></script>
+    <script src="/json/2bhk_lt40.geojson"></script>
+    <script src="/json/2bhk_gt60.geojson"></script>
+    <script src="/json/3bhk_gt80.geojson"></script>
+    <script src="/json/3bhk_gt100.geojson"></script>
+    <script src="/json/3bhk_lt80.geojson"></script>
+    <script src="/json/4bhk_gt100.geojson"></script>
+    <script src="/json/4bhk_gt150.geojson"></script>
+    <script src="/json/4bhk_lt100.geojson"></script>
+    <script src="/json/schools_dissolved.geojson"></script>
+    <script src="/json/railways_dissolved.geojson"></script>
+    <script src="/json/hospitals_dissolved.geojson"></script>
+    <script src="/json/police_dissolved.geojson"></script>
+    <script src="/json/parks_dissolved.geojson"></script>
+    <script src="/json/fire_station_dissolved.geojson"></script>
+    <script src="/json/fire_station.geojson"></script>
+    <script src="/json/parks.geojson"></script>
+    <script src="/json/railway_stations.geojson"></script>
+    <script src="/json/hospitals.geojson"></script>
+    <script src="/json/police.geojson"></script>
+    <script src="/json/schools.geojson"></script>
+    <script src="/scripts/rentmap.js"></script>
+    
+</body>
+</html>

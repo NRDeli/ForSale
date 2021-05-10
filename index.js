@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const url = require('url');
 const bodyParser = require('body-parser');
+const { ppid } = require('process');
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -27,38 +28,27 @@ app.get('/locguide/map',(req,res) => {
     res.render('geocode',{ latitude: lat ,longitude: long})
 })
 
-function geocode(req,res,next){
-    console.log(req.body);
-    var pin = req.body.pin;
-    next(pin);
+app.get('/houserent',(req,res) => {
+    res.render('rentform');
+});
 
-    
-    var location= pin;
-            axios.get('https://api.opencagedata.com/geocode/v1/json',{
-                params:{
-                    q: location,
-                    key:'2c289f4ef5c54aea80a4af1777abf758'
-                }
-            })
-            .then(function(response){
-                console.log(response);
-                next();
-            })
-            .catch(function(e){
-                console.log(e);
-            });
-    
-};
+app.post('/houserent/maps',(req,res) => {
+    var bhk = req.body.bhk;
+    var price = req.body.price;
+    res.render('rentmap',{ bhk: bhk, price: price });
+})
 
 app.post('/locguide/maps',(req,res) => {
     var pin = req.body.pin;
     var area = req.body.area;
     res.render('geocoding',{ pin: pin , area: area });
-})
+});
 
 app.post('/locguide/map',(req,res)=>{
     res.render('geocode');
 });
+
+
 
 app.get('*',(req,res)=>{
     res.send("Page Not found");
