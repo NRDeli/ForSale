@@ -68,24 +68,18 @@ function geocode(pin=null,area=null,mymap,fir){
 
 
 
-
-
-
-
-
-
-
-var fire_icon = new L.icon({
+var fire_icon = L.icon({
     iconUrl: '/images/firestation.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function fire(feature,layer){
-    layer.setIcon(fire_icon);
-}
-
 var firestations = L.geoJSON(fire_station, {
-    onEachFeature: fire
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: fire_icon});
+    }
 });
 
 function fir_change(e){
@@ -102,17 +96,19 @@ function fir_change(e){
 
 
 
-var pol_icon = new L.icon({
+
+var pol_icon = L.icon({
     iconUrl: '/images/police.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function pol(feature,layer){
-    layer.setIcon(pol_icon);
-}
-
 var polstations = L.geoJSON(police, {
-    onEachFeature: pol
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: pol_icon});
+    }
 });
 function pol_change(e){
     if(e.checked){
@@ -128,18 +124,18 @@ function pol_change(e){
 
 
 
-
-var hos_icon = new L.icon({
+var hos_icon = L.icon({
     iconUrl: '/images/hospital.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function hos(feature,layer){
-    layer.setIcon(hos_icon);
-}
-
 var hosp = L.geoJSON(hospitals, {
-    onEachFeature: hos
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: hos_icon});
+    }
 });
 
 function hos_change(e){
@@ -155,18 +151,21 @@ function hos_change(e){
 
 
 
-var rail_icon = new L.icon({
-    iconUrl: '/images/railway.png',
-    iconSize: [35,35]
-});
 
-function rail(feature,layer){
-    layer.setIcon(rail_icon);
-}
+var rail_icon = L.icon({
+    iconUrl: '/images/railway.png',
+    iconSize:     [35, 35], // size of the icon
+});
 
 var railstation = L.geoJSON(railway_stations, {
-    onEachFeature: rail
-});
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: rail_icon});
+    }
+      
+})
 
 function rail_change(e){
     if(e.checked){
@@ -181,17 +180,19 @@ function rail_change(e){
 
 
 
-var sch_icon = new L.icon({
+
+var school_icon = L.icon({
     iconUrl: '/images/school.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function sch(feature,layer){
-    layer.setIcon(sch_icon);
-}
-
 var schoo = L.geoJSON(schools, {
-    onEachFeature: sch
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: school_icon});
+    }
 });
 
 function sch_change(e){
@@ -209,17 +210,20 @@ function sch_change(e){
 
 
 
-var par_icon = new L.icon({
+
+
+var park_icon = L.icon({
     iconUrl: '/images/park.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function par(feature,layer){
-    layer.setIcon(par_icon);
-}
-
 var parkk = L.geoJSON(parks, {
-    onEachFeature: par
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: park_icon});
+    }
 });
 
 function par_change(e){
@@ -230,11 +234,3 @@ function par_change(e){
         mymap.removeLayer(parkk);
     }
 }
-
-
-
-
-
-
-
-

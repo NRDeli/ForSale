@@ -38,6 +38,18 @@ app.post('/houserent/maps',(req,res) => {
     res.render('rentmap',{ bhk: bhk, price: price });
 })
 
+app.get('/houserent/maps/details',(req,res) => {
+    var desc = req.query.desc;
+    var lat = req.query.lat;
+    var long = req.query.long;
+    var price = req.query.price;
+    var title = req.query.title;
+    var loc = req.query.loc;
+    var user_type = req.query.user_type;
+    res.render('house_details',{ desc:desc , lat:lat , long:long , price:price , title:title , loc:loc , user_type:user_type });
+})
+
+
 app.post('/locguide/maps',(req,res) => {
     var pin = req.body.pin;
     var area = req.body.area;

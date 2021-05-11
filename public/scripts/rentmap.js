@@ -2,7 +2,7 @@ var bhk = document.getElementById('bhk').innerHTML;
 var price = document.getElementById('price').innerHTML;
 
 
-var mymap = L.map('map').setView([19.1,72.8], 12);
+var mymap = L.map('map').setView([19.08,72.88], 12);
 
 const tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
@@ -12,29 +12,40 @@ const tiles = L.tileLayer(tileURL, { attribution });
 
 tiles.addTo(mymap);
 
-var house_icon = new L.icon({
+var house_icon = L.icon({
     iconUrl: '/images/house.png',
-    iconSize: [25,25]
+    iconSize:     [35, 35], // size of the icon
 });
-
-function house(feature,layer){
-    layer.setIcon(house_icon);
-}
 
 if(bhk==1){
     if(price==1){
         L.geoJSON(onebhk_lt40, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
     else if(price==2){
         L.geoJSON(onebhk_gt40, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
     else{
         L.geoJSON(onebhk_gt60, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
 }
@@ -42,17 +53,32 @@ if(bhk==1){
 if(bhk==2){
     if(price==1){
         L.geoJSON(twobhk_lt40, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
     else if(price==2){
         L.geoJSON(twobhk_gt40, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
     else{
         L.geoJSON(twobhk_gt60, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
 }
@@ -60,17 +86,32 @@ if(bhk==2){
 if(bhk==3){
     if(price==1){
         L.geoJSON(threebhk_lt80, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
     else if(price==2){
         L.geoJSON(threebhk_gt80, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
     else{
         L.geoJSON(threebhk_gt100, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
 }
@@ -78,17 +119,33 @@ if(bhk==3){
 if(bhk==4){
     if(price==1){
         L.geoJSON(fourbhk_lt100, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
     else if(price==2){
         L.geoJSON(fourbhk_gt100, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<h5>'+feature.properties.title+'</h5>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
     else{
         L.geoJSON(fourbhk_gt150, {
-            onEachFeature: house
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
+                //layer.bindPopup('<h6>'+feature.properties.title+'</h6><h6>Price: '+feature.properties.price+'</h6><a href="/houserent/maps/details?price='+feature.properties.city+'"><h6>More Details</h6></a>')
+              },
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng,{icon: house_icon});
+            }
         }).addTo(mymap);
     }
 }
@@ -104,17 +161,18 @@ var firelayer = L.geoJSON(fire_station_dissolved, {
     return layer.feature.properties.description;
 })
 
-var fire_icon = new L.icon({
+var fire_icon = L.icon({
     iconUrl: '/images/firestation.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function fire(feature,layer){
-    layer.setIcon(fire_icon);
-}
-
 var firestations = L.geoJSON(fire_station, {
-    onEachFeature: fire
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: fire_icon});
+    }
 });
 
 function fir_change(e){
@@ -141,17 +199,18 @@ var pollayer = L.geoJSON(police_dissolved, {
     return layer.feature.properties.description;
 });
 
-var pol_icon = new L.icon({
+var pol_icon = L.icon({
     iconUrl: '/images/police.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function pol(feature,layer){
-    layer.setIcon(pol_icon);
-}
-
 var polstations = L.geoJSON(police, {
-    onEachFeature: pol
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: pol_icon});
+    }
 });
 function pol_change(e){
     if(e.checked){
@@ -178,17 +237,18 @@ var hoslayer = L.geoJSON(hospitals_dissolved, {
     return layer.feature.properties.description;
 })
 
-var hos_icon = new L.icon({
+var hos_icon = L.icon({
     iconUrl: '/images/hospital.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function hos(feature,layer){
-    layer.setIcon(hos_icon);
-}
-
 var hosp = L.geoJSON(hospitals, {
-    onEachFeature: hos
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: hos_icon});
+    }
 });
 
 function hos_change(e){
@@ -214,18 +274,20 @@ var raillayer = L.geoJSON(railways_dissolved, {
     return layer.feature.properties.description;
 })
 
-var rail_icon = new L.icon({
+var rail_icon = L.icon({
     iconUrl: '/images/railway.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
-
-function rail(feature,layer){
-    layer.setIcon(rail_icon);
-}
 
 var railstation = L.geoJSON(railway_stations, {
-    onEachFeature: rail
-});
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: rail_icon});
+    }
+      
+})
 
 function rail_change(e){
     if(e.checked){
@@ -251,17 +313,18 @@ var schlayer = L.geoJSON(schools_dissolved, {
     return layer.feature.properties.description;
 })
 
-var sch_icon = new L.icon({
+var school_icon = L.icon({
     iconUrl: '/images/school.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function sch(feature,layer){
-    layer.setIcon(sch_icon);
-}
-
 var schoo = L.geoJSON(schools, {
-    onEachFeature: sch
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: school_icon});
+    }
 });
 
 function sch_change(e){
@@ -290,17 +353,18 @@ var parlayer = L.geoJSON(parks_dissolved, {
     return layer.feature.properties.description;
 })
 
-var par_icon = new L.icon({
+var park_icon = L.icon({
     iconUrl: '/images/park.png',
-    iconSize: [35,35]
+    iconSize:     [35, 35], // size of the icon
 });
 
-function par(feature,layer){
-    layer.setIcon(par_icon);
-}
-
 var parkk = L.geoJSON(parks, {
-    onEachFeature: par
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
+      },
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng,{icon: park_icon});
+    }
 });
 
 function par_change(e){
