@@ -12,47 +12,15 @@
     <p id="demo"></p> 
     <h2>Enter Address</h2>
     <form action="locguide/maps/" method="POST">
-        <label for="fname">Pincode: </label><br>
-        <input type="text" id="pin" name="pin" value="400"><br>
-        <label for="lname">Area: </label><br>
+        <label for="pin">Pincode: </label><br>
+        <input type="text" id="pin" name="pin" value=""><br>
+        <label for="area">Area: </label><br>
         <input type="text" id="area" name="area" value=""><br>
         <input type="submit" value="Submit">
     </form>
-    <!--
-    <script>
-        var x = document.getElementById("demo");
-        function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else { 
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-        }
+    
 
-        function showPosition(position) {
-        //x.innerHTML = position.coords.latitude + " " + position.coords.longitude;
-            var lat = position.coords.latitude;
-            var long = position.coords.longitude;
-            window.location.href="/knowyourloc/map?lat="+lat+"&long="+long;
-        }
 
-        function geocode(){
-            var location= 'Swami Vivekanand Road,borivali west';
-            axios.get('https://api.opencagedata.com/geocode/v1/json',{
-                params:{
-                    q: location,
-                    key:'2c289f4ef5c54aea80a4af1777abf758'
-                }
-            })
-            .then(function(response){
-                console.log(response);
-            })
-            .catch(function(e){
-                console.log(e);
-            });
-        }
-
-    </script>-->
     <script src="/scripts/locguide.js"></script>
 </body>
 </html>

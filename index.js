@@ -50,6 +50,7 @@ app.post('/locguide/map',(req,res)=>{
 
 
 
+
 app.get('*',(req,res)=>{
     res.send("Page Not found");
 })
