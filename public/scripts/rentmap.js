@@ -2,7 +2,7 @@ var bhk = document.getElementById('bhk').innerHTML;
 var price = document.getElementById('price').innerHTML;
 
 
-var mymap = L.map('map').setView([19.08,72.88], 12);
+var mymap = L.map('map').setView([19.08, 72.88], 12);
 
 const tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
@@ -14,136 +14,136 @@ tiles.addTo(mymap);
 
 var house_icon = L.icon({
     iconUrl: '/images/house.png',
-    iconSize:     [35, 35], // size of the icon
+    iconSize: [35, 35], // size of the icon
 });
 
-if(bhk==1){
-    if(price==1){
+if (bhk == 1) {
+    if (price == 1) {
         L.geoJSON(onebhk_lt40, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
-    else if(price==2){
+    else if (price == 2) {
         L.geoJSON(onebhk_gt40, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
-    else{
+    else {
         L.geoJSON(onebhk_gt60, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
 }
 
-if(bhk==2){
-    if(price==1){
+if (bhk == 2) {
+    if (price == 1) {
         L.geoJSON(twobhk_lt40, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
-    else if(price==2){
+    else if (price == 2) {
         L.geoJSON(twobhk_gt40, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
-    else{
+    else {
         L.geoJSON(twobhk_gt60, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
 }
 
-if(bhk==3){
-    if(price==1){
+if (bhk == 3) {
+    if (price == 1) {
         L.geoJSON(threebhk_lt80, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
-    else if(price==2){
+    else if (price == 2) {
         L.geoJSON(threebhk_gt80, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
-    else{
+    else {
         L.geoJSON(threebhk_gt100, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
 }
 
-if(bhk==4){
-    if(price==1){
+if (bhk == 4) {
+    if (price == 1) {
         L.geoJSON(fourbhk_lt100, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
-    else if(price==2){
+    else if (price == 2) {
         L.geoJSON(fourbhk_gt100, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
-    else{
+    else {
         L.geoJSON(fourbhk_gt150, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}"><h6>More Details</h6></a>`);
-              },
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng,{icon: house_icon});
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, { icon: house_icon });
             }
         }).addTo(mymap);
     }
@@ -154,7 +154,7 @@ if(bhk==4){
 
 var firelayer = L.geoJSON(fire_station_dissolved, {
     style: function (feature) {
-        return {color: "red"};
+        return { color: "red" };
     }
 }).bindPopup(function (layer) {
     return layer.feature.properties.description;
@@ -162,24 +162,24 @@ var firelayer = L.geoJSON(fire_station_dissolved, {
 
 var fire_icon = L.icon({
     iconUrl: '/images/firestation.png',
-    iconSize:     [35, 35], // size of the icon
+    iconSize: [35, 35], // size of the icon
 });
 
 var firestations = L.geoJSON(fire_station, {
     onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
-      },
-    pointToLayer: function(feature,latlng){
-        return L.marker(latlng,{icon: fire_icon});
+        layer.bindPopup('<h5>' + feature.properties.name + '</h5>')
+    },
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: fire_icon });
     }
 });
 
-function fir_change(e){
-    if(e.checked){
+function fir_change(e) {
+    if (e.checked) {
         mymap.addLayer(firelayer);
         mymap.addLayer(firestations);
     }
-    else{
+    else {
         mymap.removeLayer(firelayer);
         mymap.removeLayer(firestations);
     }
@@ -192,7 +192,7 @@ function fir_change(e){
 
 var pollayer = L.geoJSON(police_dissolved, {
     style: function (feature) {
-        return {color: "brown"};
+        return { color: "brown" };
     }
 }).bindPopup(function (layer) {
     return layer.feature.properties.description;
@@ -200,23 +200,23 @@ var pollayer = L.geoJSON(police_dissolved, {
 
 var pol_icon = L.icon({
     iconUrl: '/images/police.png',
-    iconSize:     [35, 35], // size of the icon
+    iconSize: [35, 35], // size of the icon
 });
 
 var polstations = L.geoJSON(police, {
     onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
-      },
-    pointToLayer: function(feature,latlng){
-        return L.marker(latlng,{icon: pol_icon});
+        layer.bindPopup('<h5>' + feature.properties.name + '</h5>')
+    },
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: pol_icon });
     }
 });
-function pol_change(e){
-    if(e.checked){
+function pol_change(e) {
+    if (e.checked) {
         mymap.addLayer(pollayer);
         mymap.addLayer(polstations);
     }
-    else{
+    else {
         mymap.removeLayer(pollayer);
         mymap.removeLayer(polstations);
     }
@@ -230,7 +230,7 @@ function pol_change(e){
 
 var hoslayer = L.geoJSON(hospitals_dissolved, {
     style: function (feature) {
-        return {color: "black"};
+        return { color: "black" };
     }
 }).bindPopup(function (layer) {
     return layer.feature.properties.description;
@@ -238,24 +238,24 @@ var hoslayer = L.geoJSON(hospitals_dissolved, {
 
 var hos_icon = L.icon({
     iconUrl: '/images/hospital.png',
-    iconSize:     [35, 35], // size of the icon
+    iconSize: [35, 35], // size of the icon
 });
 
 var hosp = L.geoJSON(hospitals, {
     onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
-      },
-    pointToLayer: function(feature,latlng){
-        return L.marker(latlng,{icon: hos_icon});
+        layer.bindPopup('<h5>' + feature.properties.name + '</h5>')
+    },
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: hos_icon });
     }
 });
 
-function hos_change(e){
-    if(e.checked){
+function hos_change(e) {
+    if (e.checked) {
         mymap.addLayer(hoslayer);
         mymap.addLayer(hosp);
     }
-    else{
+    else {
         mymap.removeLayer(hoslayer);
         mymap.removeLayer(hosp);
     }
@@ -267,7 +267,7 @@ function hos_change(e){
 
 var raillayer = L.geoJSON(railways_dissolved, {
     style: function (feature) {
-        return {color: "blue"};
+        return { color: "blue" };
     }
 }).bindPopup(function (layer) {
     return layer.feature.properties.description;
@@ -275,25 +275,25 @@ var raillayer = L.geoJSON(railways_dissolved, {
 
 var rail_icon = L.icon({
     iconUrl: '/images/railway.png',
-    iconSize:     [35, 35], // size of the icon
+    iconSize: [35, 35], // size of the icon
 });
 
 var railstation = L.geoJSON(railway_stations, {
     onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
-      },
-    pointToLayer: function(feature,latlng){
-        return L.marker(latlng,{icon: rail_icon});
+        layer.bindPopup('<h5>' + feature.properties.name + '</h5>')
+    },
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: rail_icon });
     }
-      
+
 })
 
-function rail_change(e){
-    if(e.checked){
+function rail_change(e) {
+    if (e.checked) {
         mymap.addLayer(raillayer);
         mymap.addLayer(railstation);
     }
-    else{
+    else {
         mymap.removeLayer(raillayer);
         mymap.removeLayer(railstation);
     }
@@ -306,7 +306,7 @@ function rail_change(e){
 
 var schlayer = L.geoJSON(schools_dissolved, {
     style: function (feature) {
-        return {color: "orange"};
+        return { color: "orange" };
     }
 }).bindPopup(function (layer) {
     return layer.feature.properties.description;
@@ -314,25 +314,25 @@ var schlayer = L.geoJSON(schools_dissolved, {
 
 var school_icon = L.icon({
     iconUrl: '/images/school.png',
-    iconSize:     [35, 35], // size of the icon
+    iconSize: [35, 35], // size of the icon
 });
 
 var schoo = L.geoJSON(schools, {
     onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
-      },
-    pointToLayer: function(feature,latlng){
-        return L.marker(latlng,{icon: school_icon});
+        layer.bindPopup('<h5>' + feature.properties.name + '</h5>')
+    },
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: school_icon });
     }
 });
 
-function sch_change(e){
-    if(e.checked){
+function sch_change(e) {
+    if (e.checked) {
         mymap.addLayer(schlayer);
         mymap.addLayer(schoo);
-        
+
     }
-    else{
+    else {
         mymap.removeLayer(schlayer);
         mymap.removeLayer(schoo);
     }
@@ -346,7 +346,7 @@ function sch_change(e){
 
 var parlayer = L.geoJSON(parks_dissolved, {
     style: function (feature) {
-        return {color: "green"};
+        return { color: "green" };
     }
 }).bindPopup(function (layer) {
     return layer.feature.properties.description;
@@ -354,26 +354,25 @@ var parlayer = L.geoJSON(parks_dissolved, {
 
 var park_icon = L.icon({
     iconUrl: '/images/park.png',
-    iconSize:     [35, 35], // size of the icon
+    iconSize: [35, 35], // size of the icon
 });
 
 var parkk = L.geoJSON(parks, {
     onEachFeature: function (feature, layer) {
-        layer.bindPopup('<h5>'+feature.properties.name+'</h5>')
-      },
-    pointToLayer: function(feature,latlng){
-        return L.marker(latlng,{icon: park_icon});
+        layer.bindPopup('<h5>' + feature.properties.name + '</h5>')
+    },
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: park_icon });
     }
 });
 
-function par_change(e){
-    if(e.checked){
+function par_change(e) {
+    if (e.checked) {
         mymap.addLayer(parlayer);
         mymap.addLayer(parkk);
     }
-    else{
+    else {
         mymap.removeLayer(parlayer);
         mymap.removeLayer(parkk);
     }
 }
-

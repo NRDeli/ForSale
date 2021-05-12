@@ -1,20 +1,63 @@
 <%- include ("./partials/header.ejs")%>
+    <link rel="stylesheet" href="/stylesheets/locguide.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <div class="mb-3">
-        <h3>Detect Current Location</h3>
-        <button id='detect' onclick="getLocation()">Check</button>
-        <p id="demo"></p>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-lg-6">
+                <div class="container-fluid">
+                    <div class="row-lg-2"><br><br></div>
+                    <div class="row-lg-4">
+                        <div class="row">
+                            <div class="col-lg-4"><img class="img-fluid" src="./images/location-pin.jpg" alt=""></div>
+                            <div class="col-lg-8">
+                                <h1>KNOW YOUR LOCATION</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-lg-4 text-center">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates eaque perspiciatis ratione
+                        mollitia assumenda maiores pariatur excepturi neque quisquam sint eos aperiam veniam tenetur,
+                        rem minus praesentium, commodi ullam velit.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil voluptatum sint aut perferendis
+                        ex magnam quam, officiis vero eaque. Facere beatae, laboriosam iusto quia voluptas ullam ratione
+                        eos nobis fugiat.
+                    </div>
+                    <div class="row-lg-2"></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div id="main">
+                    <form action="locguide/maps/" method="POST">
+                        <p id="heading"><strong> KNOW YOUR LOCATION</strong></p>
+                        <p id="info">Select EITHER pincode OR area. </p>
+                        <div class="container-fluid">
+                            <div class="row mb-3">
+                                <label for="pin" class="col-sm-2 col-form-label"><span
+                                        class="ff">Pincode:</span></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="pin" name="pin" value=""
+                                        placeholder="eg.400092">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="area" class="col-sm-2 col-form-label"><span class="ff">Area:</span></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="area" name="area" id="area"
+                                        placeholder="eg.borivali">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary">Detect location</button>
+                            </div>
+                        </div>
+                        <p class="OR"><strong>---------OR--------</strong></p>
+                    </form>
+                    <button type="submit" id="auto" class="btn btn-primary" onclick="getLocation()">Auto Detect
+                        location</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <h2>Enter Address</h2>
-    <form action="locguide/maps/" method="POST">
-        <label for="pin">Pincode: </label><br>
-        <input type="text" id="pin" name="pin" value=""><br>
-    </form>
-    ------------OR------------
-    <form action="">
-        <label for="area">Area: </label><br>
-        <input type="text" id="area" name="area" value=""><br>
-    </form>
 
-    <script src="/scripts/locguide.js"></script>
+    <script src=" /scripts/locguide.js"></script>
+    <%- include ("./partials/footer.ejs")%>

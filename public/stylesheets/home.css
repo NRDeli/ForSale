@@ -1,0 +1,19 @@
+.card{
+    margin: 100px 0px;
+    width:fit-content; 
+    height:fit-content;
+    border: 3px dashed #6b705c;
+    border-radius: 20px;
+    height: 600px;
+}
+img{
+    border-radius: 20px;
+}
+body{
+    background-image: url('../images/NarimanPoint.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
