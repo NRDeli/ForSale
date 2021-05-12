@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House Details</title>
-</head>
-
-<body>
+<%- include('partials/header.ejs') %>
     <h2>Title : <%=title%>
     </h2><br>
     <h2>Price : <%=price%>
@@ -26,11 +16,9 @@
     <h2>Id : <%=id%>
     </h2>
     <form
-        action="/houserent/maps/details/<%=id%>/wishlist?title=<%=title%>&price=<%=price%>&desc=<%=desc%>&lat=<%=lat%>&long=<%=long%>&loc=<%=loc%>&user=<%=user_type%>&id=<%=id%>"
+        action="/houserent/maps/details/wishlist?title=<%=title%>&price=<%=price%>&desc=<%=desc%>&lat=<%=lat%>&long=<%=long%>&loc=<%=loc%>&user=<%=user_type%>&id=<%=id%>"
         method="post">
 
         <input type="submit">AddToWishList</input>
     </form>
-</body>
-
-</html>
+    <%- include('partials/footer.ejs') %>

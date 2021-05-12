@@ -11,7 +11,9 @@ function geocode(pin, area, mymap) {
     var pin = pin;
     var area = area;
     var location = "";
-    if (pin.length == 6) {
+    console.log(pin);
+    console.log(pin.length);
+    if (pin.length > 15) {
         location = pin + ",Mumbai";
     }
     else {

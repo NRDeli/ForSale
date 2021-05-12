@@ -1,0 +1,23 @@
+<%- include ("./partials/header.ejs")%>
+    <% foundUser["wishlist"].forEach(function(wish){ %>
+
+        <p>
+        <h2>Title : <%=wish.title%>
+        </h2><br>
+        <h2>Price : <%=wish.price%>
+        </h2><br>
+        <h2>Desc : <%=wish.desc%>
+        </h2><br>
+        <h2>Latitude : <%=wish.lat%>
+        </h2><br>
+        <h2>Longitude : <%=wish.long%>
+        </h2><br>
+        <h2>Locality : <%=wish.loc%>
+        </h2><br>
+        <h2>User : <%=wish.user_type%>
+        </h2><br>
+        <h2>Id : <%=wish.id%>
+        </h2>
+        </p>
+        <%})%>
+            <p>WISHLIST PAGE!</p>

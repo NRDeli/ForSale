@@ -9,7 +9,7 @@ var userSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "item",
-        }]
+        }],
 
 })
 //pspLclMng -it contains all the finctions as that of serialize user ,deserializeUser,authenicate,isAuthenticated defined

@@ -107,24 +107,25 @@ app.post('/locguide/map', (req, res) => {
     res.render('geocode');
 });
 // wishlist
-// app.get("/wishlist",isLoggedIn,function(req,res){	
-// 	// console.log(req.params.userId);
-// 	USER.findById(req.user._id).populate("wishlist").exec(function(err,foundUser){
-// 		if(err){
-// 			console.log("Error in wishlist get");
-// 			console.log(err);
-// 		}else{
-// 			// console.log(req.user.username);
-// 			res.render("wishlist",{foundUser:foundUser});
-// 			// console.log(foundUser);
-// 		}
-// 	})
+app.get("/wishlist", isLoggedIn, function (req, res) {
+    // res.render("wishlist");
+    // console.log(req.params.userId);
+    USER.findById(req.user._id).populate("wishlist").exec(function (err, foundUser) {
+        if (err) {
+            console.log("Error in wishlist get");
+            console.log(err);
+        } else {
+            // console.log(req.user.username);
+            res.render("wishlist", { foundUser: foundUser });
+            // console.log(foundUser);
+        }
+    })
 
-// });
+});
 //itemSchema
 
 var itemSchema = new mongoose.Schema({
-    _id: String,
+    // _id: String,
     title: String,
     price: Number,
     Desc: String,
@@ -136,8 +137,8 @@ var itemSchema = new mongoose.Schema({
 
 var item = mongoose.model("item", itemSchema);
 
-//******************** *
-app.post("/houserent/maps/details/:id/wishlist", isLoggedIn, function (req, res) {
+//*********************
+app.post("/houserent/maps/details/wishlist", isLoggedIn, function (req, res) {
     console.log(req.body.itemId);
     var desc = req.query.desc;
     var lat = req.query.lat;
@@ -146,16 +147,15 @@ app.post("/houserent/maps/details/:id/wishlist", isLoggedIn, function (req, res)
     var title = req.query.title;
     var loc = req.query.loc;
     var user = req.query.user;
-    var id = req.query.id;
+    // var id = req.query.id;
     let itemToBeAdded;
-
+    // console.log(req.user._id);
     USER.findOne({ _id: req.user._id }, function (err, foundUser) {
         if (err) {
             console.log("ERROR in post wishlist 1");
             console.log(err);
         } else {
             var tempItem = {
-                _id: id,
                 title: title,
                 Desc: desc,
                 Latitude: lat,
@@ -163,40 +163,32 @@ app.post("/houserent/maps/details/:id/wishlist", isLoggedIn, function (req, res)
                 Locality: loc,
                 user_type: user,
             };
+            // console.log(tempItem);
             item.create(tempItem, function (err, newItem) {
                 if (err) {
                     console.log("error in itemcreate");
                 } else {
-                    comment.save();
-                    foundUser.wishlist.push(comment);
-                    foundUser.save(function (err) {
+                    // console.log(newItem);
+
+                    foundUser.wishlist.push(newItem);
+
+                    foundUser.save(function (err, saved) {
                         if (err) {
-                            console.log("kuch toh gadbad hai daya in save");
+                            console.log("ERROR in post wishlist 2");
+                            console.log(err);
                         } else {
-                            console.log("saved into wishlist!");
+                            console.log("added to wishlist sucessfully!");
                             res.redirect("/");
                         }
-                    });
-                }
-            });
-            foundUser.wishlist.push(tempItem);
-            foundUser.save(function (err, saved) {
-                if (err) {
-                    console.log("ERROR in post wishlist 2");
-                    console.log(err);
-                } else {
-                    console.log("added to wishlist sucessfully!");
-                    res.redirect("/");
+                    })
                 }
             })
+
         }
     });
 
 
 });
-
-
-
 
 
 //auth routes
@@ -232,7 +224,7 @@ app.get("/login", function (req, res) {
 
 
 app.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/wishlist",
     failureRedirect: "/login"
 }), function (req, res) { });
 
