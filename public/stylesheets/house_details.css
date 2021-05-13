@@ -1,0 +1,19 @@
+#box{
+    width: 85%; 
+    height: 85%; 
+    border: 5px solid black; 
+    margin: 50px;
+}
+
+.tag{
+    background-color:#48cae4;
+}
+
+.arrow{
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-left: 10px solid #555;
+        border-bottom: 5px solid transparent;
+}
+

@@ -1,24 +1,66 @@
 <%- include('partials/header.ejs') %>
-    <h2>Title : <%=title%>
-    </h2><br>
-    <h2>Price : <%=price%>
-    </h2><br>
-    <h2>Desc : <%=desc%>
-    </h2><br>
-    <h2>Latitude : <%=lat%>
-    </h2><br>
-    <h2>Longitude : <%=long%>
-    </h2><br>
-    <h2>Locality : <%=loc%>
-    </h2><br>
-    <h2>User : <%=user_type%>
-    </h2><br>
-    <h2>Id : <%=id%>
-    </h2>
-    <form
-        action="/houserent/maps/details/wishlist?title=<%=title%>&price=<%=price%>&desc=<%=desc%>&lat=<%=lat%>&long=<%=long%>&loc=<%=loc%>&user=<%=user_type%>&id=<%=id%>"
-        method="post">
-
-        <input type="submit">AddToWishList</input>
-    </form>
+    <link rel="stylesheet" href="/stylesheets/house_details.css">
+    <div id="box" class="container-fluid">
+        <div class="row-2 text-left d-flex">
+            <div class="col-10">
+                <h3><span class="tag">Title</span><span class="arrow"></span>
+                    <%=title%>
+                </h3>
+            </div>
+            <div class="col-2">
+                <h3><span class="tag">Id</span>
+                    <%=id%>
+                </h3>
+            </div>
+        </div>
+        <br>
+        <div class="row-1 text-left">
+            <h3><span class="tag">Price</span><span class="arrow"></span>
+                ₹ <%=price%>/month
+            </h3>
+        </div>
+        <br>
+        <div class="row-4 text-left">
+            <h3><span class="tag">Desc</span><span class="arrow"></span>
+                <%=desc%>
+            </h3>
+        </div>
+        <br>
+        <div class="row-1 text-left">
+            <h3><span class="tag">Latitude</span><span class="arrow"></span>
+                <%=lat%>
+            </h3>
+        </div>
+        <div class="row-1 text-left">
+            <h3><span class="tag">Longitude</span><span class="arrow"></span>
+                <%=long%>
+            </h3>
+        </div>
+        <br>
+        <div class="row-1 text-left">
+            <h3><span class="tag">Locality</span><span class="arrow"></span>
+                <%=loc%>
+            </h3>
+        </div>
+        <div class="row-1 text-left">
+            <h3><span class="tag">User</span><span class="arrow"></span>
+                <%=user_type%>
+            </h3>
+        </div>
+        <br>
+        <div class="row-1">
+            <div class="col">
+                <a href="">&lt;&lt;Back to map</a>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <form
+                        action="/houserent/maps/details/wishlist?title=<%=title%>&price=<%=price%>&desc=<%=desc%>&lat=<%=lat%>&long=<%=long%>&loc=<%=loc%>&user=<%=user_type%>&id=<%=id%>"
+                        method="POST">
+                        <button class="btn btn-success mb-5" type="submit">Add To Wishlist!</input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <%- include('partials/footer.ejs') %>
