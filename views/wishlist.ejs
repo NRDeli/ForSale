@@ -1,23 +1,24 @@
 <%- include ("./partials/header.ejs")%>
+<link rel="stylesheet" href="/stylesheets/wishlist.css">
+    <h1 class="display-4">Your Saved Properties</h1>
     <% foundUser["wishlist"].forEach(function(wish){ %>
+      <div class="container-fluid">
+        <div class="row">
+          <div id="card" class="card d-inline-block mx-auto" style="width: 50rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%=wish.title%></h5>
+              <h6 class="card-subtitle mb-2 text-muted">₹<%=wish.price%>/month</h6>
+              <p class="card-text"><%=wish.Desc%><br><strong>USER : </strong> <%=wish.user_type%></br></p>
+              <a href="#" class="card-link">Card link</a>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      <%})%>
+        
+       
 
-        <p>
-        <h2>Title : <%=wish.title%>
-        </h2><br>
-        <h2>Price : <%=wish.price%>
-        </h2><br>
-        <h2>Desc : <%=wish.desc%>
-        </h2><br>
-        <h2>Latitude : <%=wish.lat%>
-        </h2><br>
-        <h2>Longitude : <%=wish.long%>
-        </h2><br>
-        <h2>Locality : <%=wish.loc%>
-        </h2><br>
-        <h2>User : <%=wish.user_type%>
-        </h2><br>
-        <h2>Id : <%=wish.id%>
-        </h2>
-        </p>
-        <%})%>
-            <p>WISHLIST PAGE!</p>
+        
+        

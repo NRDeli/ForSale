@@ -1,10 +1,14 @@
 <%- include ("./partials/header.ejs")%>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/rentmap.css">
     <title>Rentmap</title>
 
     <span id="bhk" class="d-none">
         <%= bhk %>
+    </span>
+    <span id="area" class="d-none">
+        <%= area %>
     </span>
     <span id="price" class="d-none">
         <%= price %>
@@ -68,7 +72,7 @@
     <script src="/json/fire_station_dissolved.geojson"></script>
     <script src="/json/fire_station.geojson"></script>
     <script src="/json/parks.geojson"></script>
-    <script src="/json/railway_stations.geojson"></script>
+    <script src="/json/railway.geojson"></script>
     <script src="/json/hospitals.geojson"></script>
     <script src="/json/police.geojson"></script>
     <script src="/json/schools.geojson"></script>

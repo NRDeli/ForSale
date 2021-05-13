@@ -1,6 +1,24 @@
 <%- include ("./partials/header.ejs")%>
-    <form action="/login" method="post">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <input type="submit">
-    </form>
+<link rel="stylesheet" href="/stylesheets/login.css">
+<div class="container-fluid">
+    <div class="row" id ="main">
+        <div class="col-lg-6">
+            <img class="img-fluid img-thumbnail" src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="Manhattan, NY">
+        </div>
+        <div class="col-lg-6">
+            <div id= "center"class="container-fluid col-md-6 col-md-offset-2"> 
+                <div id="cent"class="row text-center">
+                    <p>LOGIN</p>
+                    <form action="/login" method="POST">
+                        <input class="form-control" type="text" name="username" placeholder="username">
+                        <input class="form-control" type="password" name="password" placeholder="password">
+                        <input type="submit" class="btn btn-success">
+                    </form>
+                    <p> New user? <a href="/register">Sign Up</a> now.</p>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+   <%- include ("./partials/footer.ejs")%>

@@ -1,0 +1,19 @@
+body{
+    background : #e6fff2;
+}
+#card{
+    display : flex;
+    flex-direction : row;
+    justify-content : flex-start;
+    align-items: flex-start;
+    margin-bottom: 15px;
+
+    border: 1px solid #e6ffe6;
+  padding: 10px;
+  box-shadow: 5px 10px #33ffad;
+}
+.display-4{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left : 20px;
+}

@@ -81,7 +81,8 @@ app.get('/houserent', (req, res) => {
 app.post('/houserent/maps', (req, res) => {
     var bhk = req.body.bhk;
     var price = req.body.price;
-    res.render('rentmap', { bhk: bhk, price: price });
+    var area = req.body.area;
+    res.render('rentmap', { bhk: bhk, price: price, area: area });
 });
 
 app.get('/houserent/maps/details', (req, res) => {
@@ -93,7 +94,9 @@ app.get('/houserent/maps/details', (req, res) => {
     var loc = req.query.loc;
     var user_type = req.query.user_type;
     var id = req.query.id;
-    res.render('house_details', { desc: desc, lat: lat, long: long, price: price, title: title, loc: loc, user_type: user_type, id: id });
+    var bhk = req.query.bhk;
+    var p = req.query.p;
+    res.render('house_details', { desc: desc, lat: lat, long: long, price: price, title: title, loc: loc, user_type: user_type, id: id, bhk: bhk, p:p });
 })
 
 
@@ -148,7 +151,7 @@ app.post("/houserent/maps/details/wishlist", isLoggedIn, function (req, res) {
     var loc = req.query.loc;
     var user = req.query.user;
     // var id = req.query.id;
-    let itemToBeAdded;
+    // let itemToBeAdded;
     // console.log(req.user._id);
     USER.findOne({ _id: req.user._id }, function (err, foundUser) {
         if (err) {
@@ -157,6 +160,7 @@ app.post("/houserent/maps/details/wishlist", isLoggedIn, function (req, res) {
         } else {
             var tempItem = {
                 title: title,
+                price:price,
                 Desc: desc,
                 Latitude: lat,
                 Longitude: long,

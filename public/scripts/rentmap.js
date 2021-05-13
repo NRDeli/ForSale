@@ -1,16 +1,54 @@
 var bhk = document.getElementById('bhk').innerHTML;
 var price = document.getElementById('price').innerHTML;
+var area = document.getElementById('area').innerHTML;
+
+var mymap = L.map('map');
 
 
-var mymap = L.map('map').setView([19.08, 72.88], 12);
 
-const tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+geocode(area, mymap);
 
-const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+function geocode(area, mymap) {
+    var area = area;
+    var location = area + ",Mumbai";
+    axios.get('https://api.opencagedata.com/geocode/v1/json', {
+        params: {
+            q: location,
+            key: '2c289f4ef5c54aea80a4af1777abf758'
+        }
+    })
+        .then(function (response) {
+            console.log(location);
+            lat = response.data.results[0].geometry.lat;
+            long = response.data.results[0].geometry.lng
 
-const tiles = L.tileLayer(tileURL, { attribution });
+            mymap.setView([lat, long], 14.5);
+            //var mymap = L.map('map').setView([lat,long], 14);
 
-tiles.addTo(mymap);
+            const tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+            const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
+            const tiles = L.tileLayer(tileURL, { attribution });
+
+            tiles.addTo(mymap);
+
+            
+
+
+
+
+
+
+        })
+        .catch(function (e) {
+            console.log(e);
+        });
+}
+
+
+
+
 
 var house_icon = L.icon({
     iconUrl: '/images/house.png',
@@ -21,7 +59,7 @@ if (bhk == 1) {
     if (price == 1) {
         L.geoJSON(onebhk_lt40, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -31,7 +69,7 @@ if (bhk == 1) {
     else if (price == 2) {
         L.geoJSON(onebhk_gt40, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -41,7 +79,7 @@ if (bhk == 1) {
     else {
         L.geoJSON(onebhk_gt60, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -54,7 +92,7 @@ if (bhk == 2) {
     if (price == 1) {
         L.geoJSON(twobhk_lt40, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -64,7 +102,7 @@ if (bhk == 2) {
     else if (price == 2) {
         L.geoJSON(twobhk_gt40, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -74,7 +112,7 @@ if (bhk == 2) {
     else {
         L.geoJSON(twobhk_gt60, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -87,7 +125,7 @@ if (bhk == 3) {
     if (price == 1) {
         L.geoJSON(threebhk_lt80, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -97,7 +135,7 @@ if (bhk == 3) {
     else if (price == 2) {
         L.geoJSON(threebhk_gt80, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -107,7 +145,7 @@ if (bhk == 3) {
     else {
         L.geoJSON(threebhk_gt100, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -120,7 +158,7 @@ if (bhk == 4) {
     if (price == 1) {
         L.geoJSON(fourbhk_lt100, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -130,7 +168,7 @@ if (bhk == 4) {
     else if (price == 2) {
         L.geoJSON(fourbhk_gt100, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });
@@ -140,7 +178,7 @@ if (bhk == 4) {
     else {
         L.geoJSON(fourbhk_gt150, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}"><h6>More Details</h6></a>`);
+                layer.bindPopup(`<h6>${feature.properties.title}</h6><h6>Price: ${feature.properties.price}</h6><a href="/houserent/maps/details?desc=${feature.properties.desc}&lat=${feature.properties.latitude}&long=${feature.properties.longitude}&price=${feature.properties.price}&loc=${feature.properties.locality}&title=${feature.properties.title}&user_type=${feature.properties.user_type}&id=${feature.properties.id}&bhk=${bhk}&p=${price}"><h6>More Details</h6></a>`);
             },
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, { icon: house_icon });

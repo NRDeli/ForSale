@@ -48,9 +48,17 @@
             </h3>
         </div>
         <br>
+        
         <div class="row-1">
             <div class="col">
-                <a href="">&lt;&lt;Back to map</a>
+                <!--<a href="/houserent/maps">&lt;&lt;Back to map</a>-->
+                <form
+                    action="/houserent/maps"
+                    method="POST">
+                    <input type="hidden" id="bhk" name="bhk" value=<%=bhk%>>
+                    <input type="hidden" id="price" name="price" value=<%=p%>>
+                    <button class="btn btn-success mb-5" type="submit">Back to map</input>
+                </form>
             </div>
             <div class="col">
                 <div class="d-flex justify-content-end">
