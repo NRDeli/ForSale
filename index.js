@@ -25,11 +25,6 @@ mongoose.connect("mongodb://localhost:27017/igt", {
 //bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-//authentication setUP
-
-//setting up express-session
-
 app.use(require("express-session")({
     secret: "MEET AAYUSH NIRMIT MANN",
     resave: false,
@@ -48,8 +43,6 @@ app.use(passport.session());
 passport.use(new localStrategy(USER.authenticate()));
 passport.serializeUser(USER.serializeUser());
 passport.deserializeUser(USER.deserializeUser());
-//*********************************************************************************8
-
 
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -96,9 +89,8 @@ app.get('/houserent/maps/details', (req, res) => {
     var id = req.query.id;
     var bhk = req.query.bhk;
     var p = req.query.p;
-    res.render('house_details', { desc: desc, lat: lat, long: long, price: price, title: title, loc: loc, user_type: user_type, id: id, bhk: bhk, p:p });
+    res.render('house_details', { desc: desc, lat: lat, long: long, price: price, title: title, loc: loc, user_type: user_type, id: id, bhk: bhk, p: p });
 })
-
 
 app.post('/locguide/maps', (req, res) => {
     var pin = req.body.pin;
@@ -109,26 +101,20 @@ app.post('/locguide/maps', (req, res) => {
 app.post('/locguide/map', (req, res) => {
     res.render('geocode');
 });
-// wishlist
+
 app.get("/wishlist", isLoggedIn, function (req, res) {
-    // res.render("wishlist");
-    // console.log(req.params.userId);
     USER.findById(req.user._id).populate("wishlist").exec(function (err, foundUser) {
         if (err) {
             console.log("Error in wishlist get");
             console.log(err);
         } else {
-            // console.log(req.user.username);
             res.render("wishlist", { foundUser: foundUser });
-            // console.log(foundUser);
         }
     })
 
 });
-//itemSchema
 
 var itemSchema = new mongoose.Schema({
-    // _id: String,
     title: String,
     price: Number,
     Desc: String,
@@ -139,8 +125,6 @@ var itemSchema = new mongoose.Schema({
 })
 
 var item = mongoose.model("item", itemSchema);
-
-//*********************
 app.post("/houserent/maps/details/wishlist", isLoggedIn, function (req, res) {
     console.log(req.body.itemId);
     var desc = req.query.desc;
@@ -150,9 +134,6 @@ app.post("/houserent/maps/details/wishlist", isLoggedIn, function (req, res) {
     var title = req.query.title;
     var loc = req.query.loc;
     var user = req.query.user;
-    // var id = req.query.id;
-    // let itemToBeAdded;
-    // console.log(req.user._id);
     USER.findOne({ _id: req.user._id }, function (err, foundUser) {
         if (err) {
             console.log("ERROR in post wishlist 1");
@@ -160,22 +141,18 @@ app.post("/houserent/maps/details/wishlist", isLoggedIn, function (req, res) {
         } else {
             var tempItem = {
                 title: title,
-                price:price,
+                price: price,
                 Desc: desc,
                 Latitude: lat,
                 Longitude: long,
                 Locality: loc,
                 user_type: user,
             };
-            // console.log(tempItem);
             item.create(tempItem, function (err, newItem) {
                 if (err) {
                     console.log("error in itemcreate");
                 } else {
-                    // console.log(newItem);
-
                     foundUser.wishlist.push(newItem);
-
                     foundUser.save(function (err, saved) {
                         if (err) {
                             console.log("ERROR in post wishlist 2");
@@ -190,24 +167,17 @@ app.post("/houserent/maps/details/wishlist", isLoggedIn, function (req, res) {
 
         }
     });
-
-
 });
 
-
-//auth routes
-//added login sign up
 app.get("/register", function (req, res) {
     res.render("register");
 });
-//sign up logic
+
 app.post("/register", function (req, res) {
-    // console.log("password:" + req.body.password);
-    // console.log("username" + req.body.username);
 
     USER.register(new USER({ username: req.body.username }), req.body.password, function (err, user) {
         if (err) {
-            console.log("kuch toh gadbad hai!");
+            console.log("OOPS ! Something went wrong");
             console.log(err);
             return res.redirect("/");
         } else {
@@ -218,14 +188,9 @@ app.post("/register", function (req, res) {
     });
 });
 
-
-//login form
 app.get("/login", function (req, res) {
     res.render("login");
 });
-
-//login logic
-
 
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/wishlist",
@@ -233,19 +198,17 @@ app.post("/login", passport.authenticate("local", {
 }), function (req, res) { });
 
 
-//logout!
 app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
 });
-//middleware                   	//we will mention this in the secret route
-function isLoggedIn(req, res, next) {    		//the syntax is typical for middleware
+
+function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
-    }							//since return is there no else needed
+    }
     res.redirect("/login");
 }
-
 
 app.get('*', (req, res) => {
     res.send("Page Not found");
